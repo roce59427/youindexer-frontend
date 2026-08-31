@@ -56,6 +56,21 @@ function handleTagSelect(label) {
             <SearchBar @search="goToResults" />
           </div>
           <SearchActions @action="goToResults" />
+          <div class="flex items-center gap-4 mb-stack-md">
+            <router-link
+              :to="{ name: 'video-url-ingest' }"
+              class="font-label-lg text-label-lg text-primary hover:underline"
+            >
+              或直接貼 YouTube 網址擷取
+            </router-link>
+            <span class="text-on-surface-variant">·</span>
+            <router-link
+              :to="{ name: 'product-search' }"
+              class="font-label-lg text-label-lg text-primary hover:underline"
+            >
+              搜尋產品跨來源總覽
+            </router-link>
+          </div>
           <TrendingAnalysis @select="handleTagSelect" />
         </div>
         <AppFooter />

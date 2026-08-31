@@ -23,6 +23,16 @@ const router = createRouter({
       path: '/video',
       name: 'video-insight',
       component: () => import('../views/VideoInsightView.vue')
+    },
+    {
+      path: '/ingest',
+      name: 'video-url-ingest',
+      component: () => import('../views/VideoUrlIngestView.vue')
+    },
+    {
+      path: '/product-search',
+      name: 'product-search',
+      component: () => import('../views/ProductSearchView.vue')
     }
   ]
 })

@@ -167,6 +167,27 @@ export function streamKeywordSearchJobEvents(taskId, callbacks) {
 }
 
 /**
+ * Ingest a single video directly from its URL, bypassing keyword search.
+ * Currently only YouTube URLs are supported; other sources return a 501 error.
+ * @param {string} url
+ */
+export async function ingestVideoByUrl(url) {
+  return authFetch(`${API_BASE}/ingest/by-url`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ url: url.trim() })
+  })
+}
+
+/**
+ * Fetch a video's current transcription/indexing status.
+ * @param {string} videoId
+ */
+export async function getVideoIndexStatus(videoId) {
+  return authFetch(`${API_BASE}/youtube/videos/${encodeURIComponent(videoId)}/index`)
+}
+
+/**
  * Search indexed subtitles across all videos.
  * @param {string} query
  * @param {string} [language]

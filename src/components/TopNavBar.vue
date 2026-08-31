@@ -20,9 +20,8 @@ const emit = defineEmits(['search'])
 const router = useRouter()
 
 const navItems = [
-  { label: '控制台', href: '#', active: true },
-  { label: '數據分析', href: '#', active: false },
-  { label: '深度洞察', href: '#', active: false }
+  { label: '貼網址擷取', routeName: 'video-url-ingest' },
+  { label: '產品跨來源總覽', routeName: 'product-search' }
 ]
 
 const iconButtons = [
@@ -79,20 +78,16 @@ function handleLogout() {
         <router-link to="/" class="flex items-center" aria-label="回到首頁">
           <img :src="logoUrl" alt="YouIndexer" class="h-9 w-auto object-contain" />
         </router-link>
-        <nav class="hidden md:flex gap-6">
-          <a
+        <nav class="hidden md:flex gap-2">
+          <router-link
             v-for="item in navItems"
-            :key="item.label"
-            :href="item.href"
-            :class="[
-              'font-body-md text-body-md pb-1 transition-colors cursor-pointer active:opacity-80 transition-opacity',
-              item.active
-                ? 'text-primary font-bold border-b-2 border-primary'
-                : 'text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest'
-            ]"
+            :key="item.routeName"
+            :to="{ name: item.routeName }"
+            class="font-body-md text-body-md px-3 py-2 rounded-full transition-colors text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest"
+            active-class="text-primary font-bold bg-primary-container/20"
           >
             {{ item.label }}
-          </a>
+          </router-link>
         </nav>
       </div>
 
@@ -190,19 +185,16 @@ function handleLogout() {
     class="md:hidden w-full bg-surface dark:bg-inverse-surface border-b border-outline-variant"
   >
     <div class="flex flex-col gap-2 px-margin-mobile py-stack-sm max-w-[1280px] mx-auto">
-      <a
+      <router-link
         v-for="item in navItems"
-        :key="item.label"
-        :href="item.href"
-        :class="[
-          'font-body-md text-body-md py-2 px-3 rounded-lg transition-colors',
-          item.active
-            ? 'text-primary font-bold bg-surface-container dark:bg-surface-container-highest'
-            : 'text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest'
-        ]"
+        :key="item.routeName"
+        :to="{ name: item.routeName }"
+        class="font-body-md text-body-md py-2 px-3 rounded-lg transition-colors text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest"
+        active-class="text-primary font-bold bg-surface-container dark:bg-surface-container-highest"
+        @click="mobileMenuOpen = false"
       >
         {{ item.label }}
-      </a>
+      </router-link>
       <a
         href="#"
         class="font-body-md text-body-md text-primary dark:text-inverse-primary py-2 px-3 rounded-lg hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors"

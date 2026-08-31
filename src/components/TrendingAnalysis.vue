@@ -3,10 +3,8 @@ defineProps({
   tags: {
     type: Array,
     default: () => [
-      { icon: 'trending_up', label: '2024 AI 採用趨勢' },
-      { icon: 'bar_chart', label: 'Q3 SaaS 指標' },
-      { icon: 'public', label: '全球隱私權法規' },
-      { icon: 'group', label: 'Z 世代消費習慣' }
+      { icon: 'menu_book', label: '納瓦爾寶典' },
+      { icon: 'palette', label: 'Maybelline 睫毛膏' }
     ]
   }
 })
